@@ -41,7 +41,7 @@ fibL 5
 // this by inserting the loggin _before_ the fixed point is tied.
 
 // So we need our own fixed point combinator.
-let rec fix fU fR = fU (fix fU) fR
+let rec fix fU x = fU (fix fU) x
 // We will use the convention then fU denotes the untied version of f
 // while fR denotes the recursive call.
 
