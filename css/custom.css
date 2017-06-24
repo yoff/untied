@@ -1,3 +1,7 @@
-table, th, td {
-   border: 1px solid black;
+.reveal table, .reveal table th, .reveal table td {
+   border: 0;
+   border-spacing: 0;
+   padding: 0px;
+   border-collapse: collapse;
+   /*background-color: black;*/
 }
