@@ -5,3 +5,9 @@
    border-collapse: collapse;
    /*background-color: black;*/
 }
+
+.reveal code {
+    font-family: "Droid Sans Mono", consolas, monospace;
+    color: #e1e1e1;
+    background-color: #212d30;
+}
