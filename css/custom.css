@@ -1,4 +1,4 @@
-.reveal table, .reveal table th, .reveal table td {
+.reveal table, .reveal table tr, .reveal table td {
    border: 0;
    border-spacing: 0;
    padding: 0px;

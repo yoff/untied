@@ -49,10 +49,11 @@
         <div class="tip" id="fs1">val fix : f:((&#39;a -&gt; &#39;b) -&gt; &#39;a -&gt; &#39;b) -&gt; x:&#39;a -&gt; &#39;b<br /><br />Full name: index.fix</div>
 <div class="tip" id="fs2">val f : ((&#39;a -&gt; &#39;b) -&gt; &#39;a -&gt; &#39;b)</div>
 <div class="tip" id="fs3">val x : &#39;a</div>
-<div class="tip" id="fs4">val fibU : fibR:(int -&gt; int) -&gt; x:int -&gt; int<br /><br />Full name: index.fibU</div>
-<div class="tip" id="fs5">val fibR : (int -&gt; int)</div>
-<div class="tip" id="fs6">val x : int</div>
-<div class="tip" id="fs7">val fib : (int -&gt; int)<br /><br />Full name: index.fib</div>
+<div class="tip" id="fs4">val fib : x:int -&gt; int<br /><br />Full name: index.fib</div>
+<div class="tip" id="fs5">val x : int</div>
+<div class="tip" id="fs6">val fibU : fibR:(int -&gt; int) -&gt; x:int -&gt; int<br /><br />Full name: index.fibU</div>
+<div class="tip" id="fs7">val fibR : (int -&gt; int)</div>
+<div class="tip" id="fs8">val fib : (int -&gt; int)<br /><br />Full name: index.fib</div>
 
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
@@ -95,66 +96,91 @@ A point that is not moved
 </section>
 <section >
 <h4>Example</h4>
-<svg id="fixdiag" xmlns="http://www.w3.org/2000/svg" width="330" height="400">
-  <g transform="translate(10,10), scale(3) ">
-    <line x1="0" y1="50" x2="100" y2="50" style="stroke:white" />
-    <line x1="50" y1="0" x2="50" y2="100" style="stroke:white" />
-    <line x1="0" y1="100" x2="0" y2="100" style="stroke:grey">
-        <animate
-            attributeName="x2"
-            begin="fixdiag.click"
-            from="0"
-            to="100"
-            dur="1s"
-            fill="freeze"
+<svg id="fixdiag" xmlns="http://www.w3.org/2000/svg" width="330" height="450">
+    <g transform="translate(10,10), scale(3) ">
+        <line x1="0" y1="50" x2="100" y2="50" style="stroke:white" />
+        <line x1="50" y1="0" x2="50" y2="100" style="stroke:white" />
+        <line x1="0" y1="100" x2="0" y2="100" style="stroke:grey">
+            <animate
+                attributeName="x2"
+                begin="fixdiag.click"
+                from="0"
+                to="100"
+                dur=".7s"
+                fill="freeze"
+            />
+            <animate
+                attributeName="y2"
+                begin="fixdiag.click"
+                from="100"
+                to="0"
+                dur=".7s"
+                fill="freeze"
+            />
+        </line>
+        <path
+            style="fill:none; stroke:green"
+            d="M 0 70
+            Q 10 70 20 80
+            Q 40 100 80 20
+            Q 90 0 100 0"
         />
-        <animate
-            attributeName="y2"
-            begin="fixdiag.click"
-            from="100"
-            to="0"
-            dur="1s"
-            fill="freeze"
-        />
-    </line>
-    <path
-        style="fill:none; stroke:green"
-        d="M 0 70
-        Q 10 70 20 80
-        Q 40 100 80 20
-        Q 90 0 100 0"
-    />
-    <circle cx="20" cy="80" r="0" style="fill:blue; stroke:lightblue">
-        <animate
-            attributeName="r"
-            begin="fixdiag.click+1.2"
-            from="0"
-            to="2"
-            dur="1s"
-            fill="freeze"
-        />
-    </circle>
-    <circle cx="80" cy="20" r="0" style="fill:blue; stroke:lightblue">
-        <animate
-            attributeName="r"
-            begin="fixdiag.click+1.2"
-            from="0"
-            to="2"
-            dur="1s"
-            fill="freeze"
-        />
-    </circle>
-    <circle cx="100" cy="0" r="0" style="fill:blue; stroke:lightblue">
-        <animate
-            attributeName="r"
-            begin="fixdiag.click+1.2"
-            from="0"
-            to="2"
-            dur="1s"
-            fill="freeze"
-        />
-    </circle>
-  </g>
+        <circle cx="20" cy="80" r="0" style="fill:blue; stroke:lightblue">
+            <animate
+                attributeName="r"
+                begin="fixdiag.click+1"
+                from="0"
+                to="2"
+                dur=".5s"
+                fill="freeze"
+            />
+        </circle>
+        <circle cx="80" cy="20" r="0" style="fill:blue; stroke:lightblue">
+            <animate
+                attributeName="r"
+                begin="fixdiag.click+1.2"
+                from="0"
+                to="2"
+                dur=".5s"
+                fill="freeze"
+            />
+        </circle>
+        <circle cx="100" cy="0" r="0" style="fill:blue; stroke:lightblue">
+            <animate
+                attributeName="r"
+                begin="fixdiag.click+1.4"
+                from="0"
+                to="2"
+                dur=".5s"
+                fill="freeze"
+            />
+        </circle>
+    </g>
+    <text x="130" y="350" style="fill:green; stroke:none">
+        y = f(x)
+    </text>
+    <text x="130" y="500" style="fill:grey; stroke:none">
+            <animate
+                attributeName="y"
+                begin="fixdiag.click"
+                from="500"
+                to="390"
+                dur="1s"
+                fill="freeze"
+            />
+        y = x
+    </text>
+    <text x="130" y="540" style="fill:lightblue; stroke:none">
+            <animate
+                attributeName="y"
+                begin="fixdiag.click+1"
+                from="540"
+                to="430"
+                dur="1s"
+                fill="freeze"
+            />
+        x = f(x)
+    </text>
 </svg>
 </section>
 </section>
@@ -229,46 +255,60 @@ That is
 </section>
 <section >
 <h4>The fixed point combinator</h4>
-<p>For any function(al), <span class="math">\(\ f : A \rightarrow A\)</span>, we may ask for the set of fixed points for <span class="math">\(f\)</span>
-<span class="math">\[fix(f) = \{ x\ |\ f(x) = x\}\]</span>
+<p><span class="math">\(x\)</span> is a fixed point for <span class="math">\(f\)</span> iff
+<span class="math">\[f(x) = x\]</span>
 <br />
-This set can be empty or very large
+So a fixed point combinator must satisfy
+<span class="math">\[f(fix(f)) = fix(f)\]</span>
 <br />
-<br />
-When <span class="math">\(A\)</span> is a set of definable functions, the set is often non-empty.
-<br />
-<br />
-To define an operator, we typically ask for the least fixed point.</p>
-</section>
-<section >
-<h4>The fixed point combinator in code</h4>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
-<span class="l"> 2: </span>
-<span class="l"> 3: </span>
-<span class="l"> 4: </span>
-<span class="l"> 5: </span>
-<span class="l"> 6: </span>
-<span class="l"> 7: </span>
-<span class="l"> 8: </span>
-<span class="l"> 9: </span>
-<span class="l">10: </span>
+We can use the left hand side as a definition</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="c">// fixed point combinator</span>
-
-<span class="k">let</span> <span class="k">rec</span> <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="f">fix</span> <span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="f">f</span> <span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="i">x</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs2', 4)" onmouseover="showTip(event, 'fs2', 4)" class="f">f</span> (<span onmouseout="hideTip(event, 'fs1', 5)" onmouseover="showTip(event, 'fs1', 5)" class="f">fix</span> <span onmouseout="hideTip(event, 'fs2', 6)" onmouseover="showTip(event, 'fs2', 6)" class="f">f</span>) <span onmouseout="hideTip(event, 'fs3', 7)" onmouseover="showTip(event, 'fs3', 7)" class="i">x</span>
-
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs4', 8)" onmouseover="showTip(event, 'fs4', 8)" class="f">fibU</span> <span onmouseout="hideTip(event, 'fs5', 9)" onmouseover="showTip(event, 'fs5', 9)" class="f">fibR</span> <span onmouseout="hideTip(event, 'fs6', 10)" onmouseover="showTip(event, 'fs6', 10)" class="i">x</span> <span class="o">=</span>
-  <span class="k">if</span> <span onmouseout="hideTip(event, 'fs6', 11)" onmouseover="showTip(event, 'fs6', 11)" class="i">x</span> <span class="o">&lt;</span> <span class="n">2</span> <span class="k">then</span> <span onmouseout="hideTip(event, 'fs6', 12)" onmouseover="showTip(event, 'fs6', 12)" class="i">x</span>
-  <span class="k">else</span> <span onmouseout="hideTip(event, 'fs5', 13)" onmouseover="showTip(event, 'fs5', 13)" class="f">fibR</span> (<span onmouseout="hideTip(event, 'fs6', 14)" onmouseover="showTip(event, 'fs6', 14)" class="i">x</span><span class="o">-</span><span class="n">2</span>) <span class="o">+</span> <span onmouseout="hideTip(event, 'fs5', 15)" onmouseover="showTip(event, 'fs5', 15)" class="f">fibR</span> (<span onmouseout="hideTip(event, 'fs6', 16)" onmouseover="showTip(event, 'fs6', 16)" class="i">x</span><span class="o">-</span><span class="n">1</span>)
-
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs7', 17)" onmouseover="showTip(event, 'fs7', 17)" class="f">fib</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs1', 18)" onmouseover="showTip(event, 'fs1', 18)" class="f">fix</span> <span onmouseout="hideTip(event, 'fs4', 19)" onmouseover="showTip(event, 'fs4', 19)" class="f">fibU</span>
-<span class="c">// [0..5] |&gt; List.map fib</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="k">rec</span> <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="f">fix</span> <span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="f">f</span> <span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="i">x</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs2', 4)" onmouseover="showTip(event, 'fs2', 4)" class="f">f</span> (<span onmouseout="hideTip(event, 'fs1', 5)" onmouseover="showTip(event, 'fs1', 5)" class="f">fix</span> <span onmouseout="hideTip(event, 'fs2', 6)" onmouseover="showTip(event, 'fs2', 6)" class="f">f</span>) <span onmouseout="hideTip(event, 'fs3', 7)" onmouseover="showTip(event, 'fs3', 7)" class="i">x</span>
 </code></pre></td>
 </tr>
 </table>
 </section>
 </section>
 <section >
+<section >
+<h3>Coding without recursion</h3>
+<p>So, when we write</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="k">rec</span> <span onmouseout="hideTip(event, 'fs4', 8)" onmouseover="showTip(event, 'fs4', 8)" class="f">fib</span> <span onmouseout="hideTip(event, 'fs5', 9)" onmouseover="showTip(event, 'fs5', 9)" class="i">x</span> <span class="o">=</span>
+  <span class="k">if</span> <span onmouseout="hideTip(event, 'fs5', 10)" onmouseover="showTip(event, 'fs5', 10)" class="i">x</span> <span class="o">&lt;</span> <span class="n">2</span> <span class="k">then</span> <span onmouseout="hideTip(event, 'fs5', 11)" onmouseover="showTip(event, 'fs5', 11)" class="i">x</span>
+  <span class="k">else</span> <span onmouseout="hideTip(event, 'fs4', 12)" onmouseover="showTip(event, 'fs4', 12)" class="f">fib</span> (<span onmouseout="hideTip(event, 'fs5', 13)" onmouseover="showTip(event, 'fs5', 13)" class="i">x</span><span class="o">-</span><span class="n">2</span>) <span class="o">+</span> <span onmouseout="hideTip(event, 'fs4', 14)" onmouseover="showTip(event, 'fs4', 14)" class="f">fib</span> (<span onmouseout="hideTip(event, 'fs5', 15)" onmouseover="showTip(event, 'fs5', 15)" class="i">x</span><span class="o">-</span><span class="n">1</span>)
+</code></pre></td>
+</tr>
+</table>
+<p>we are asking the compiler to compute the fixed point of
+<span class="math">\[e(f) = x \mapsto\ if\ x &lt; 2\ then\ x\ else\ f(x-2) + f(x-1)\]</span></p>
+</section>
+<section >
+<p><span class="math">\[e(f) = x \mapsto\ if\ x &lt; 2\ then\ x\ else\ f(x-2) + f(x-1)\]</span></p>
+<p>We can write this function explicitly</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs6', 16)" onmouseover="showTip(event, 'fs6', 16)" class="f">fibU</span> <span onmouseout="hideTip(event, 'fs7', 17)" onmouseover="showTip(event, 'fs7', 17)" class="f">fibR</span> <span onmouseout="hideTip(event, 'fs5', 18)" onmouseover="showTip(event, 'fs5', 18)" class="i">x</span> <span class="o">=</span>
+  <span class="k">if</span> <span onmouseout="hideTip(event, 'fs5', 19)" onmouseover="showTip(event, 'fs5', 19)" class="i">x</span> <span class="o">&lt;</span> <span class="n">2</span> <span class="k">then</span> <span onmouseout="hideTip(event, 'fs5', 20)" onmouseover="showTip(event, 'fs5', 20)" class="i">x</span>
+  <span class="k">else</span> <span onmouseout="hideTip(event, 'fs7', 21)" onmouseover="showTip(event, 'fs7', 21)" class="f">fibR</span> (<span onmouseout="hideTip(event, 'fs5', 22)" onmouseover="showTip(event, 'fs5', 22)" class="i">x</span><span class="o">-</span><span class="n">2</span>) <span class="o">+</span> <span onmouseout="hideTip(event, 'fs7', 23)" onmouseover="showTip(event, 'fs7', 23)" class="f">fibR</span> (<span onmouseout="hideTip(event, 'fs5', 24)" onmouseover="showTip(event, 'fs5', 24)" class="i">x</span><span class="o">-</span><span class="n">1</span>)
+</code></pre></td>
+</tr>
+</table>
+<p>and then define <code>fib</code> as the fixed point</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs8', 25)" onmouseover="showTip(event, 'fs8', 25)" class="f">fib</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs1', 26)" onmouseover="showTip(event, 'fs1', 26)" class="f">fix</span> <span onmouseout="hideTip(event, 'fs6', 27)" onmouseover="showTip(event, 'fs6', 27)" class="f">fibU</span>
+</code></pre></td>
+</tr>
+</table>
+</section>
+</section>
 <section >
 <h3>Try it now</h3>
 <ul>
@@ -318,7 +358,6 @@ Presentation
 </ul>
 </li>
 </ul>
-</section>
 </section>
 
 
