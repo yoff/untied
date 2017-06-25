@@ -211,29 +211,19 @@ Usually of the form
 </section>
 <section >
 <h4>More complete</h4>
-<!--$$f(0) = 0$$
-$$f(1) = 1$$
-$$f(x) = f(x-2) + f(x-1)$$-->
-<table>
-<tbody>
-<tr class="odd">
-<td align="right"><p><span class="math">\(f(0)\)</span></p></td>
-<td align="center"><p><span class="math">\(\quad =\quad\)</span></p></td>
-<td align="left"><p><span class="math">\(0\)</span></p></td>
-</tr>
-<tr class="even">
-<td align="right"><p><span class="math">\(f(1)\)</span></p></td>
-<td align="center"><p><span class="math">\(=\)</span></p></td>
-<td align="left"><p><span class="math">\(1\)</span></p></td>
-</tr>
-<tr class="odd">
-<td align="right"><p><span class="math">\(f(x)\)</span></p></td>
-<td align="center"><p><span class="math">\(=\)</span></p></td>
-<td align="left"><p><span class="math">\(f(x-2) + f(x-1)\)</span></p></td>
-</tr>
-</tbody>
-</table>
-
+<!--$$
+\begin{aligned}
+f(0) &\ =\ 0 \\
+f(1) &\ =\ 1 \\
+f(x) &\ =\ f(x-2) + f(x-1)
+\end{aligned}
+$$-->
+<p><span class="math">\[f(x) =
+\begin{cases}
+\ 0 &amp; ,\ x = 0 \\
+\ 1 &amp; ,\ x = 1 \\
+\ f(x-2) + f(x-1) &amp; ,\ x &gt; 1
+\end{cases}\]</span></p>
 </section>
 </section>
 <section >
@@ -284,10 +274,23 @@ We can use the left hand side as a definition</p>
 </tr>
 </table>
 <p>we are asking the compiler to compute the fixed point of
-<span class="math">\[e(f) = x \mapsto\ if\ x &lt; 2\ then\ x\ else\ f(x-2) + f(x-1)\]</span></p>
+<!--$$
+e(f) = x \mapsto\ if\ x < 2\ then\ x\ else\ f(x-2) + f(x-1)
+$$--></p>
+<p><span class="math">\[e(f) = x \mapsto\
+\begin{cases}
+\ 0 &amp; ,\ x = 0 \\
+\ 1 &amp; ,\ x = 1 \\
+\ f(x-2) + f(x-1) &amp; ,\ x &gt; 1
+\end{cases}\]</span></p>
 </section>
 <section >
-<p><span class="math">\[e(f) = x \mapsto\ if\ x &lt; 2\ then\ x\ else\ f(x-2) + f(x-1)\]</span></p>
+<p><span class="math">\[e(f) = x \mapsto\
+\begin{cases}
+\ 0 &amp; ,\ x = 0 \\
+\ 1 &amp; ,\ x = 1 \\
+\ f(x-2) + f(x-1) &amp; ,\ x &gt; 1
+\end{cases}\]</span></p>
 <p>We can write this function explicitly</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
