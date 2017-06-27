@@ -4,6 +4,7 @@
 // through a number of small functions.
 // You are meant to run the code snippets and laugh with glee and surprise.
 
+
 /// Standard
 // Suppose we want to implement the Fibonacci sequence (who doesn't).
 // We might write a standard implementation like so:
@@ -18,7 +19,6 @@ let rec fibL n =
 
 // This works beautifully
 fibL 5
-
 
 // We may, however, prefer not to add such a line of code to all the
 // functions we wish to log. Rather, we would separate concerns and
@@ -71,6 +71,7 @@ let printIt x = printfn "Called with %A" x
 let fibL = fibU |> log printIt |> fix
 
 fibL 5
+
 
 /// Interlude
 // Since the logging is nicely separated from the function, we can
@@ -172,6 +173,7 @@ let toPairs l = l |> Seq.pairwise |> Seq.toList
 let flattenPairs ps = ps |> List.collect (fun (a,b) -> [a; b])
 !store |> List.rev |> toPairs |> flattenPairs |> intLogToSVG |> saveSVG "fib1.svg"
 
+
 /// Memoization
 // Storing argument values can be useful for more than logging.
 // A common trick is to store arguments together with computed values.
@@ -237,6 +239,7 @@ let initWith v f x = f (v,x)
 let fibLi = fibU |> tagLevel |> log logLevel |> fix |> initWith 0
 fibLi 5
 // </Solution>
+
 
 /// Bounded recursion
 // Another technique for optimising is to switch algorithm once a certain criterion,
@@ -327,6 +330,7 @@ type Sorter<'a> = 'a list -> 'a list
 let mergeSortB : Sorter<int> = mergeSortU |> switch (isSmall 16) insertionSort |> fix
 mergeSortB [8; 3; 9; 11; -121; 4; 4; 23; 3; 4; -14; -23; 0; 17; 71; 16; 17; 18]
 // </Solution>
+
 
 /// Tracking
 // Take a moment to consider what the following functional does

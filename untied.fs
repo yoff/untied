@@ -4,6 +4,7 @@
 // through a number of small functions.
 // You are meant to run the code snippets and laugh with glee and surprise.
 
+
 /// Standard
 // Suppose we want to implement the Fibonacci sequence (who doesn't).
 // We might write a standard implementation like so:
@@ -18,7 +19,6 @@ let rec fibL n =
 
 // This works beautifully
 fibL 5
-
 
 // We may, however, prefer not to add such a line of code to all the
 // functions we wish to log. Rather, we would separate concerns and
@@ -71,6 +71,7 @@ let printIt x = printfn "Called with %A" x
 let fibL = fibU |> log printIt |> fix
 
 fibL 5
+
 
 /// Interlude
 // Since the logging is nicely separated from the function, we can
@@ -172,6 +173,7 @@ let toPairs l = l |> Seq.pairwise |> Seq.toList
 let flattenPairs ps = ps |> List.collect (fun (a,b) -> [a; b])
 !store |> List.rev |> toPairs |> flattenPairs |> intLogToSVG |> saveSVG "fib1.svg"
 
+
 /// Memoization
 // Storing argument values can be useful for more than logging.
 // A common trick is to store arguments together with computed values.
@@ -217,6 +219,7 @@ let fibLM = fibU |> log printIt |> memo |> fix
 // add some state (the dictionary). Try to implement a logger which
 // indents the log by the current level of recursion
 
+
 /// Bounded recursion
 // Another technique for optimising is to switch algorithm once a certain criterion,
 // such as the input getting small, is met.
@@ -243,6 +246,7 @@ let fib4 = fibUnb |> bound 4 fibBase |> fix
 // might still be ok for computing the golden ratio?
 
 // Exercise: switch from mergesort to insertion on small lists
+
 
 /// Tracking
 // Take a moment to consider what the following functional does
