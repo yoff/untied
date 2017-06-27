@@ -273,10 +273,7 @@ We can use the left hand side as a definition</p>
 </code></pre></td>
 </tr>
 </table>
-<p>we are asking the compiler to compute the fixed point of
-<!--$$
-e(f) = x \mapsto\ if\ x < 2\ then\ x\ else\ f(x-2) + f(x-1)
-$$--></p>
+<p>we are asking the compiler to compute the fixed point of</p>
 <p><span class="math">\[e(f) = x \mapsto\
 \begin{cases}
 \ 0 &amp; ,\ x = 0 \\
@@ -309,6 +306,29 @@ $$--></p>
 </code></pre></td>
 </tr>
 </table>
+</section>
+<section >
+<h4>Does this work?</h4>
+<p>With normal recursion</p>
+<p><span class="math">\[\begin{aligned}
+fib\ 3 &amp; \mapsto fib\ 2 + fib\ 1 \\
+&amp; \mapsto (fib\ 1 + fib\ 0) + 1 \\
+&amp; \mapsto (1 + 0) + 1 \\
+&amp; \mapsto 2
+\end{aligned}\]</span></p>
+</section>
+<section >
+<p>With explicit fixed point</p>
+<p><span class="math">\[\begin{aligned}
+fib\ 3 &amp; \mapsto \underline{fix\,\, fibU\ 3} \\
+&amp; \mapsto fibU\ (fix\,\, fibU)\ 3 \\
+&amp; \mapsto (\underline{fix\,\, fibU\ 2}) + (\underline{fix\,\, fibU\ 1}) \\
+&amp; \mapsto (fibU\ (fix\,\, fibU)\ 2) + (fibU\ (fix\,\, fibU)\ 1) \\
+&amp; \mapsto ((\underline{fix\,\, fibU\ 1}) + (\underline{fix\,\, fibU\ 0})) + 1 \\
+&amp; \mapsto ((fibU\ (fix\,\, fibU)\ 1) + (fibU\ (fix\,\, fibU)\ 0)) + 1 \\
+&amp; \mapsto (1 + 0) + 1 \\
+&amp; \mapsto 2
+\end{aligned}\]</span></p>
 </section>
 </section>
 <section >
