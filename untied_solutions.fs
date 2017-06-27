@@ -159,14 +159,18 @@ let intLogToSVG ints =
 
 // This code saves the string to disk
 let localPath = __SOURCE_DIRECTORY__
-let svgPath = System.IO.Path.Combine(localPath,"test.svg")
-let saveSVG svg = System.IO.File.WriteAllText (svgPath, svg)
+let svgPath fileName = System.IO.Path.Combine(localPath,fileName)
+let saveSVG fileName svg = System.IO.File.WriteAllText (svgPath fileName, svg)
 
 // We can now render our stored values to an svg file
-!store |> List.rev |> intLogToSVG |> saveSVG
-// At this point, you should have a file called test.svg in you local folder.
+!store |> List.rev |> intLogToSVG |> saveSVG "fib.svg"
+// At this point, you should have a file called fib.svg in you local folder.
 // Try opening it it a browser.
 
+// It is not so easy to distinguish the values, let us change that
+let toPairs l = l |> Seq.pairwise |> Seq.toList
+let flattenPairs ps = ps |> List.collect (fun (a,b) -> [a; b])
+!store |> List.rev |> toPairs |> flattenPairs |> intLogToSVG |> saveSVG "fib1.svg"
 
 /// Memoization
 // Storing argument values can be useful for more than logging.
@@ -328,7 +332,7 @@ mergeSortB [8; 3; 9; 11; -121; 4; 4; 23; 3; 4; -14; -23; 0; 17; 71; 16; 17; 18]
 // Take a moment to consider what the following functional does
 let successive fU fR (x, y) = fU (fun z -> fR (y, z)) y
 
-// This one earned the comment "How do you program with these things?"
+// This one earned me the comment "How do you program with these things?"
 
 // We can motivate it with our animation generator.
 // Suppose we want the dot to move from the value that caused a call to the
@@ -339,8 +343,17 @@ let successive fU fR (x, y) = fU (fun z -> fR (y, z)) y
 let diag f x = f (x,x)
 
 // This shows which call caused the current call
-let fibSU = fibU |> successive |> log printIt |> fix |> diag
-fibSU 5
+let fibSu = fibU |> successive |> log printIt |> fix |> diag
+fibSu 5
+
+// Why not render it
+let pairStore : (int * int) list ref = ref []
+let intPairLogger = refLogger pairStore
+let fibStoreSu = fibU |> successive  |> log intPairLogger |> fix |> diag
+fibStoreSu 5
+
+!pairStore |> List.rev |> flattenPairs |> intLogToSVG |> saveSVG "fib2.svg"
+
 
 /// Go explore!
 // Ideas:
