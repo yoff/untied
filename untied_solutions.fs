@@ -8,14 +8,14 @@
 /// Standard
 // Suppose we want to implement the Fibonacci sequence (who doesn't).
 // We might write a standard implementation like so:
-let rec fib n = if n < 2 then 1 else fib (n-1) + fib (n-2)
+let rec fib n = if n < 2 then n else fib (n-1) + fib (n-2)
 [0..5] |> List.map fib
 
 // Now suppose we wish to log all the function calls (who doesn't),
 // we can easily accomplish this:
 let rec fibL n =
   printfn "Called with %A" n
-  if n < 2 then 1 else fibL (n-1) + fibL (n-2)
+  if n < 2 then n else fibL (n-1) + fibL (n-2)
 
 // This works beautifully
 fibL 5
@@ -48,7 +48,7 @@ let rec fix fU x = fU (fix fU) x
 // The untied version of fib is exactly like the tied version, except
 // recursive calls are made to an explicit argument (and so the fuction is
 // no longer recursive).
-let fibU fibR n = if n < 2 then 1 else fibR (n-1) + fibR (n-2)
+let fibU fibR n = if n < 2 then n else fibR (n-1) + fibR (n-2)
 
 // We can now tie the fixed point
 let fib = fix fibU
